@@ -18,7 +18,9 @@ test('Login to Carma using POM with env variables', async ({ page }) => {
   await loginPage.openMenu();
   await expect(await loginPage.getUserDataLocator()).toContainText('Hi Kumood');
 
-
+  await loginPage.logout();
+ 
+  await expect(loginPage.logoutButton).toBeHidden();
 
 
 });

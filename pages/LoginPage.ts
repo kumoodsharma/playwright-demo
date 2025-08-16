@@ -54,10 +54,9 @@ export class LoginPage {
   }
   
   async logout() {
-    await this.menuButton.click();
-  
+    
     await this.logoutButton.click();
-    await this.page.waitForURL('https://carma.com.au/');
+    
    
    
   }
