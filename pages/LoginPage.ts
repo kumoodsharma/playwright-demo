@@ -1,4 +1,4 @@
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
 export class LoginPage {
   private page: Page;
@@ -8,7 +8,10 @@ export class LoginPage {
   private passwordField: Locator;
   private loginButton: Locator;
   private userData: Locator;
+  readonly logoutButton: Locator;
+
  
+
 
   constructor(page: Page) {
     this.page = page;
@@ -18,7 +21,7 @@ export class LoginPage {
     this.passwordField = page.locator('input[type="password"]');
     this.loginButton = page.locator('button:has-text("Login")');
     this.userData = page.getByTestId('Menu_userData');
-    
+    this.logoutButton = page.getByTestId('menu-popper-signout-section');
   }
 
   async goto() {
@@ -48,6 +51,15 @@ export class LoginPage {
 
   async getUserDataLocator() {
     return this.userData;
+  }
+  
+  async logout() {
+    await this.menuButton.click();
+  
+    await this.logoutButton.click();
+    await this.page.waitForURL('https://carma.com.au/');
+   
+   
   }
   
 }
