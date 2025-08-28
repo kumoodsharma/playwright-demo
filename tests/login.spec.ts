@@ -1,6 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { config } from 'dotenv';
-config(); // loads variables from .env
 import { LoginPage } from '../pages/LoginPage';
 
 config(); // loads variables from .env
@@ -22,8 +21,4 @@ test('Login to Carma using POM with env variables', async ({ page }) => {
   
   await expect(loginPage.logoutButton).toBeHidden();
   
-
-  
-
-
 });
